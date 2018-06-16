@@ -13,8 +13,11 @@ class PostsController < ApplicationController
 
   def create
       @post = Post.new(post_params)
-      @post.save
+      if @post.save
       redirect_to post_path(@post), :notice => "Book was successfully created."
+      else
+      redirect_to posts_path
+      end
   end
 
   def edit
